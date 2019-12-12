@@ -6,12 +6,26 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 12:14:40 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/12 13:37:46 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/12 16:56:15 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
+
+int	ft_strchri(const char *s, int c)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return (i);
+		i++;
+	}
+	return (NULL);
+}
 
 void	free_tetris(t_etri *tetris, size_t size)
 {
