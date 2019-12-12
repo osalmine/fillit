@@ -24,7 +24,7 @@ int	ft_strchri(const char *s, int c)
 			return (i);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
 
 void	free_tetris(t_etri *tetris, size_t size)
