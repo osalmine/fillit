@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 12:14:40 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/12 16:56:15 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 09:35:08 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ t_list	*ft_read(char *buf, int nb_pieces)
 
 	cur = 'A';
 	str = ft_strdup(buf);
+	lst = NULL;
 	while (nb_pieces--)
 	{
 		if (!(temp = ft_strsub(str, 0, 21)))
@@ -122,17 +123,15 @@ t_list	*ft_read(char *buf, int nb_pieces)
 	}
 	ft_strdel(&temp);
 	ft_strdel(&str);
+	ft_lstrev(&lst);
 	t_etri *t;
-	int i = 0;
 	while (lst)
 	{
 		t = (t_etri*)lst->content;
 		printf("char: %c\n", t->abc);
 		for (int j = 0; j < t->height; j++) {
-			printf("j: %d, t->h: %d\n", j, t->height);
 			printf("%s\n", t->arr[j]);
 		}
-		printf("%d\n", i++);
 		lst = lst->next;
 	}
 	return (lst);

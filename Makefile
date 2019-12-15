@@ -6,7 +6,7 @@
 #    By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/15 12:26:27 by osalmine          #+#    #+#              #
-#    Updated: 2019/12/12 12:14:28 by osalmine         ###   ########.fr        #
+#    Updated: 2019/12/15 09:01:32 by osalmine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,19 +18,21 @@ INCLUDE = fillit.h
 LIBFT = libft.a
 
 all:
-	make -C libft
-	cp libft/$(LIBFT) .
-	gcc $(FLAGS) -c $(SOURCE) -I$(INCLUDE)
-	gcc -o $(NAME) $(OBJ) $(LIBFT)
-	rm -f $(LIBFT)
+	@make -C libft
+	@cp libft/$(LIBFT) .
+	@gcc $(FLAGS) -c $(SOURCE) -I$(INCLUDE)
+	@gcc -o $(NAME) $(OBJ) $(LIBFT)
+	@rm -f $(LIBFT)
+	@echo Compiled
 
 clean:
-	make -C libft clean
-	rm -f $(OBJ)
+	@make -C libft clean
+	@rm -f $(OBJ)
+	@echo Cleaned
 
 fclean: clean
-	make -C libft fclean
-	rm -f $(NAME)
+	@make -C libft fclean
+	@rm -f $(NAME)
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 12:20:36 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/12 16:56:36 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 09:30:29 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ t_map			*new_map(int side_len);
 int				solve_backtrack(t_list *lst, t_map *map);
 void			map_print(t_map *map);
 int				ft_strchri(const char *s, int c);
+void			ft_lstrev(t_list **list);
 
 #endif

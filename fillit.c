@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 12:16:05 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/12 13:59:38 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 09:32:51 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,23 @@ int			main(int argc, char **argv)
 	printf("\n%s, nb_pieces: %d\n\n", "ok", nb_pieces);
 	lst = ft_read(buf, nb_pieces);
 	solve(lst, nb_pieces);
-	while (1) ;
 	return (0);
+}
+
+void		ft_lstrev(t_list **list)
+{
+	t_list *cur;
+	t_list *next;
+	t_list *prev;
+
+	prev = NULL;
+	cur = *list;
+	while (cur != NULL)
+	{
+		next = cur->next;
+		cur->next = prev;
+		prev = cur;
+		cur = next;
+	}
+	*list = prev;
 }
