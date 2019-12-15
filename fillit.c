@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 12:16:05 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 16:54:29 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 18:35:50 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ int			main(int argc, char **argv)
 	if (argc != 2)
 		return (ft_display_use());
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
-		return (write(1, "fd error\n", 9));
+		return (write(1, "error\n", 6));
 	buf[read(fd, buf, BUFF_SIZE)] = '\0';
 	close(fd);
 	if (!(nb_pieces = ft_verify(buf)))
-		return (write(1, "verify error\n", 13));
+		return (write(1, "error\n", 6));
 	if (!(lst = ft_read(buf, nb_pieces)))
-		return(write(1, "read error\n", 11));
+		return(write(1, "error\n", 6));
 	solve(lst, nb_pieces);
 //	printf("\nChecking leaks...\n");
 //	while (1) ;
