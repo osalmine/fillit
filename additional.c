@@ -6,12 +6,11 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 10:51:12 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 17:50:39 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 18:46:33 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 t_etri	*new_tetris(char **arr, int height, int width, char cur)
 {

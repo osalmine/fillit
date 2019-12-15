@@ -6,12 +6,11 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 12:14:40 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 17:51:08 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 18:46:42 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 int	ft_strchri(const char *s, int c)
 {

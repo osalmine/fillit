@@ -6,12 +6,11 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 09:42:09 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 17:52:02 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 18:46:50 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 t_map	*new_map(int side_len)
 {

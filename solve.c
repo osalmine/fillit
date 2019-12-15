@@ -6,12 +6,11 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:38 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 18:09:18 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 18:46:38 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 void	map_print(t_map *map)
 {
@@ -20,7 +19,8 @@ void	map_print(t_map *map)
 	i = 0;
 	while (i < map->size)
 	{
-		ft_putendl(map->map[i]);
+		ft_putstr(map->map[i]);
+		ft_putchar('\n');
 		i++;
 	}
 }
@@ -100,7 +100,6 @@ void	solve(t_list *lst, int nb_pieces)
 	while (!solve_backtrack(lst, map))
 	{
 		size++;
-		printf("\n---\nINCREASING MAP SIZE\n");
 		free_map(map);
 		map = new_map(size);
 	}

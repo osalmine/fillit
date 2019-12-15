@@ -6,12 +6,11 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 12:16:05 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 18:35:50 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 18:46:45 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 static int	ft_display_use(void)
 {
