@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 12:14:40 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 09:35:08 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 11:14:23 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,8 @@ void	free_tetris(t_etri *tetris)
 	int y;
 
 	y = 0;
-	printf("ok\n");
 	while (y < tetris->height)
-	{
-		printf("y: %d, t->h: %d, t->arr[y]: %s\n", y, tetris->height, tetris->arr[y]);
-		ft_strdel(&(tetris->arr[y]));
-		y++;
-	}
-	printf("ko\n");
+		ft_strdel(&(tetris->arr[y++]));
 	ft_memdel((void**)&(tetris->arr));
 	ft_memdel((void**)&tetris);
 }
@@ -71,7 +65,6 @@ t_etri	*find_piece(char *buf, char cur)
 	start = new_point(0, 0);
 	end = new_point(4, 4);
 	start_end(buf, start, end);
-	printf("start->x %d\tstart->y %d\tend->x %d\tend->y %d\n", start->x, start->y, end->x, end->y);
 	arr = (char**)malloc(sizeof(char*) * (end->y - start->y + 1));
 	while (i <= end->y - start->y)
 	{
@@ -83,7 +76,6 @@ t_etri	*find_piece(char *buf, char cur)
 	tetris = new_tetris(arr, end->y - start->y + 1, end->x - start->x + 1, cur);
 	ft_memdel((void**)&start);
 	ft_memdel((void**)&end);
-	printf("%c\n", cur);
 	return (tetris);
 }
 
@@ -110,11 +102,6 @@ t_list	*ft_read(char *buf, int nb_pieces)
 			ft_strdel(&temp);
 			return (del_lst(lst));
 		}
-		for (int j = 0; j < tetris->height; j++) {
-			printf("%s\n", tetris->arr[j]);
-		}
-		printf("tetris height: %d\n", tetris->height);
-		printf("---\n");
 		ft_lstadd(&lst, ft_lstnew(tetris, sizeof(t_etri)));
 		ft_strdel(&temp);
 		ft_memdel((void**)&tetris);
@@ -124,6 +111,9 @@ t_list	*ft_read(char *buf, int nb_pieces)
 	ft_strdel(&temp);
 	ft_strdel(&str);
 	ft_lstrev(&lst);
+/*	program segfaults later if this is removed, as the list is NULL at the end
+	of this
+
 	t_etri *t;
 	while (lst)
 	{
@@ -133,6 +123,6 @@ t_list	*ft_read(char *buf, int nb_pieces)
 			printf("%s\n", t->arr[j]);
 		}
 		lst = lst->next;
-	}
+	}*/
 	return (lst);
 }

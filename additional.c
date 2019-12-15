@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 10:51:12 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/12 13:58:30 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 09:42:47 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,22 @@ t_point	*new_point(int x, int y)
 	return (new);
 }
 
-t_map	*new_map(int side_len)
+void		ft_lstrev(t_list **list)
 {
-	int		i;
-	int		j;
-	t_map	*new_map;
+	t_list *cur;
+	t_list *next;
+	t_list *prev;
 
-	new_map = (t_map*)malloc(sizeof(t_map));
-	new_map->map = (char**)malloc(sizeof(char*) * side_len);
-	new_map->size = side_len;
-	i = 0;
-	while (i < side_len)
+	prev = NULL;
+	cur = *list;
+	while (cur != NULL)
 	{
-		j = 0;
-		new_map->map[i] = ft_strnew(side_len);
-		while (j < side_len)
-		{
-			new_map->map[i][j] = '.';
-			j++;
-		}
-		i++;
+		next = cur->next;
+		cur->next = prev;
+		prev = cur;
+		cur = next;
 	}
-	return (new_map);
+	*list = prev;
 }
 
 void	free_map(t_map *map)
