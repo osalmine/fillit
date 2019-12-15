@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:38 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 17:43:47 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 18:09:18 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,20 @@ int		solve_backtrack(t_list *lst, t_map *map)
 {
 	int		x;
 	int		y;
-//	t_point	*start;
+	t_point	*start;
 	t_etri	*tetris;
 
 	if (lst == NULL)
 		return (1);
 	tetris = (t_etri *)(lst->content);
-//	start = start_pos(map);
-//	x = start->x;
-//	y = start->y;
+	start = start_pos(map);
+	x = start->x;
+	y = start->y;
 	y = 0;
 	while (y <= map->size - tetris->height)
 	{
 //		printf("y: %d, m->size - t->height: %d\n", y, map->size - tetris->height);
-//		x = start->x;
+		x = start->x;
 		x = 0;
 		while (x <= map->size - tetris->width)
 		{
