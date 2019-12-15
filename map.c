@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 09:42:09 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 13:18:02 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 14:26:21 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,83 +37,67 @@ t_map	*new_map(int side_len)
 	return (new_map);
 }
 
-void	place_piece(t_map *map, t_etri *tetris, t_point *start, char c)
+void	place_piece(t_map *map, t_etri *tetris, t_point *point, char c)
 {
 	int i;
 	int j;
 
-	j = 0;
-	while (j < tetris->width)
+	i = 0;
+	while (i < tetris->width)
 	{
-		i = 0;
-		while (i < tetris->height)
+		j = 0;
+		while (j < tetris->height)
 		{
-			printf("\n---\nplace_piece\n");
-			printf("\ntetris->arr[i][j]: %c\n", tetris->arr[i][j]);
-			printf("start->y: %d, start->x: %d\n", start->y, start->x);
-			printf("i: %d, j: %d\n", i, j);
-			printf("start->y + i: %d, start->x + j: %d\n", start->y + i, start->x + j);
-			printf("map->map[start->y + i][start->x + j]: %c\n---\n", map->map[start->y + i][start->x + j]);
-			if (tetris->arr[i][j] == '#')
-				map->map[start->y + i][start->x + j] = c;
-			i++;
+/*			printf("\n---\nplace_piece\n");
+			printf("\ntetris->arr[j][i]: %c\n", tetris->arr[j][i]);
+			printf("point->y: %d, point->x: %d\n", point->y, point->x);
+			printf("i (x): %d, j (y): %d\n", i, j);
+			printf("start->y + j: %d, start->x + i: %d\n", point->y + j, point->x + i);
+			printf("map->map[point->y + j][point->x + i]: %c\n---\n", map->map[point->y + j][point->x + i]);*/
+			if (tetris->arr[j][i] == '#')
+			{
+				map->map[point->y + j][point->x + i] = c;
+/*				if (map->map[point->y + j][point->x + i] == c)
+					printf("placing %c successful\n", c);
+				else
+					printf("placing %c not successful\n", c);*/
+//				map_print(map);
+			}
+			j++;
 		}
-		j++;
+		i++;
 	}
-//	ft_memdel((void**)&start);
+	ft_memdel((void **)&point);
 }
 
-/*int     check(t_map *map, t_etri *piece, int curx, int cury)
+int		check_map_spot(t_map *map, t_etri *tetris, int x, int y)
 {
-    int x;
-// curx + cury || cur_pos
-    x = 0;
-    if (map[curx][cury] == ".")
-        x++;
-    if ((curx + piece->arr[2] > map->size) || (cury + piece->pos[3] > map->size))
-        return (0);
-    if (map[curx + piece->arr[2]][cury + piece->arr[3]] == ".")
-        x++;
-    if ((curx + piece->arr[4] > map->size) || (cury + piece->arr[5] > map->size))
-        return (0);
-    if (map->map[curx + piece->arr[4]][cury + piece->arr[5]] == ".")
-        x++;
-    if ((curx + piece->arr[6] > map->size) || (cury + piece->arr[7] > map->size))
-        return (0);
-    if (map->map[curx + piece->arr[6]][cury + piece->arr[7]] == ".")
-        x++;
-    if (x == 4)
-        return (1);
-    return (0);
-}*/
+	int i; //y
+	int j;
 
-int		check_map_spot(t_map *map, t_etri *tetris, t_point *start)
-{
-	int y;
-	int x;
-
-	printf("\nchar: %c\n", tetris->abc);
-	for (int j = 0; j < tetris->height; j++) {
-		printf("%s\n", tetris->arr[j]);
-	}
-	y = 0;
-	if (map->map[start->y][start->x] != '.')
+/*	printf("\nchar: %c\n", tetris->abc);
+	for (int k = 0; k < tetris->height; k++) {
+		printf("%s\n", tetris->arr[k]);
+	}*/
+	i = 0;
+	if (map->map[y][x] != '.')
 		return (0);
-
-	while (y < tetris->height)
+	while (i < tetris->height)
 	{
-		x = 0;
-		while (x < tetris->width)
+		j = 0;
+		while (j < tetris->width)
 		{
-			printf("\n---\ncheck_map_spot\n");
-			printf("tetris char: %c\n", tetris->arr[y][x]);
-			printf("map char: %c\n---\n", map->map[start->y + y][start->x + x]);
-			if (tetris->arr[y][x] == '#' && map->map[start->y + y][start->x + x] != '.')
+/*			printf("\n---\ncheck_map_spot\n");
+			printf("tetris char: %c\n", tetris->arr[i][j]);
+			printf("map char: %c\n---\n", map->map[y + i][x + j]);*/
+			if (tetris->arr[i][j] == '#' && map->map[y + i][x + j] != '.')
 				return (0);
-			x++;
+			j++;
 		}
-		y++;
+		i++;
 	}
-	place_piece(map, tetris, start, tetris->abc);
+/*	printf("END X: %d\n", x);
+	printf("Placing piece\n");*/
+	place_piece(map, tetris, new_point(x, y), tetris->abc);
 	return (1);
 }
