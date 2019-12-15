@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 09:42:09 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 17:22:57 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 17:52:02 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ int		check_map_spot(t_map *map, t_etri *tetris, int x, int y)
 		printf("%s\n", tetris->arr[k]);
 	}*/
 	i = 0;
-	if (map->map[y][x] != '.')
-		return (0);
+//	if (map->map[y][x] != '.')
+//		return (0);
 	while (i < tetris->height)
 	{
 		j = 0;

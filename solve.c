@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:38 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 15:06:29 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 17:43:47 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ int		solve_backtrack(t_list *lst, t_map *map)
 {
 	int		x;
 	int		y;
-	t_point	*start;
+//	t_point	*start;
 	t_etri	*tetris;
 
 	if (lst == NULL)
 		return (1);
 	tetris = (t_etri *)(lst->content);
-	start = start_pos(map);
+//	start = start_pos(map);
 //	x = start->x;
 //	y = start->y;
 	y = 0;
@@ -72,7 +72,7 @@ int		solve_backtrack(t_list *lst, t_map *map)
 					return (1);
 				else
 					place_piece(map, tetris, new_point(x, y), '.');
-				}
+			}
 			x++;
 		}
 		y++;
@@ -97,14 +97,13 @@ void	solve(t_list *lst, int nb_pieces)
 
 	size = ft_sqrt(nb_pieces * 4);
 	map = new_map(size);
-//	printf("\n---\n");
 	while (!solve_backtrack(lst, map))
 	{
 		size++;
+		printf("\n---\nINCREASING MAP SIZE\n");
 		free_map(map);
 		map = new_map(size);
 	}
-//	printf("\nMAP:\n");
 	map_print(map);
 	free_map(map);
 }

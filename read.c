@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 12:14:40 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 17:22:36 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 17:51:08 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ t_etri	*find_piece(char *buf, char cur)
 	char	**arr;
 
 	i = 0;
-	start = new_point(0, 0);
-	end = new_point(3, 3);
+	start = new_point(3, 3);
+	end = new_point(0, 0);
 	start_end(buf, start, end);
 //	printf("buf:\n%s\n", buf);
 //	printf("start->x: %d, start->y: %d, end->x: %d, end->y: %d\n", start->x, start->y, end->x, end->y);
