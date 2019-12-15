@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 09:42:09 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 14:26:21 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 17:22:57 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,9 @@ void	place_piece(t_map *map, t_etri *tetris, t_point *point, char c)
 /*				if (map->map[point->y + j][point->x + i] == c)
 					printf("placing %c successful\n", c);
 				else
-					printf("placing %c not successful\n", c);*/
-//				map_print(map);
+					printf("placing %c not successful\n", c);
+				map_print(map);
+				printf("\n");*/
 			}
 			j++;
 		}

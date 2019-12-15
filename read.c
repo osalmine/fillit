@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 12:14:40 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 11:14:23 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 17:22:36 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,19 @@ t_etri	*find_piece(char *buf, char cur)
 
 	i = 0;
 	start = new_point(0, 0);
-	end = new_point(4, 4);
+	end = new_point(3, 3);
 	start_end(buf, start, end);
+//	printf("buf:\n%s\n", buf);
+//	printf("start->x: %d, start->y: %d, end->x: %d, end->y: %d\n", start->x, start->y, end->x, end->y);
 	arr = (char**)malloc(sizeof(char*) * (end->y - start->y + 1));
+//	printf("malloced for rows is: %d\n", end->y - start->y + 1);
 	while (i <= end->y - start->y)
 	{
 		arr[i] = ft_strnew(end->x - start->x + 1);
+//		printf("malloced for chars is: %d\n", end->x - start->x + 1);
 		ft_strncpy(arr[i], buf + start->x + (i + start->y) * 5, \
 			end->x - start->x + 1);
+//		printf("arr[%d]:\n%s\n", i, arr[i]);
 		i++;
 	}
 	tetris = new_tetris(arr, end->y - start->y + 1, end->x - start->x + 1, cur);
@@ -111,10 +116,10 @@ t_list	*ft_read(char *buf, int nb_pieces)
 	ft_strdel(&temp);
 	ft_strdel(&str);
 	ft_lstrev(&lst);
-/*	program segfaults later if this is removed, as the list is NULL at the end
-	of this
+//	program gives read error later with this while loop, as the list is NULL at the end
+//	of this
 
-	t_etri *t;
+/*	t_etri *t;
 	while (lst)
 	{
 		t = (t_etri*)lst->content;

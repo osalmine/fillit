@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 10:51:12 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 09:42:47 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 17:19:45 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,23 +74,19 @@ void	start_end(char *str, t_point *start, t_point *end)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '#')
-		{
+		if (str[i] == '#' && start->x > i % 5)
 			start->x = i % 5;
+		if (str[i] == '#' && start->y > i / 5)
 			start->y = i / 5;
-			break ;
-		}
 		i++;
 	}
 	i = ft_strlen(str) - 1;
 	while (str[i])
 	{
-		if (str[i] == '#')
-		{
+		if (str[i] == '#' && end->x < i % 5)
 			end->x = i % 5;
+		if (str[i] == '#' && end->x < i / 5)
 			end->y = i / 5;
-			break ;
-		}
 		i--;
 	}
 }
