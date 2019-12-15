@@ -6,7 +6,7 @@
 #    By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/15 12:26:27 by osalmine          #+#    #+#              #
-#    Updated: 2019/12/15 09:54:38 by osalmine         ###   ########.fr        #
+#    Updated: 2019/12/15 14:49:45 by osalmine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ FLAGS = -Wall -Werror -Wextra
 INCLUDE = fillit.h
 LIBFT = libft.a
 
-all:
+all: $(NAME)
+
+$(NAME):
 	@make -C libft
 	@cp libft/$(LIBFT) .
 	@gcc $(FLAGS) -c $(SOURCE) -I$(INCLUDE)

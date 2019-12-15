@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 12:16:05 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 14:43:01 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 15:06:17 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ int			main(int argc, char **argv)
 	close(fd);
 	if (!(nb_pieces = ft_verify(buf)))
 		return (write(2, "verify error\n", 13));
-	printf("\n%s, nb_pieces: %d\n\n", "ok", nb_pieces);
 	if (!(lst = ft_read(buf, nb_pieces)))
 		return(write(2, "read error\n", 11));
 	solve(lst, nb_pieces);
+//	printf("\nChecking leaks...\n");
+//	while (1) ;
 	return (0);
 }

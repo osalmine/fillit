@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:38 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 14:45:39 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 15:06:29 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void	solve(t_list *lst, int nb_pieces)
 //	printf("\n---\n");
 	while (!solve_backtrack(lst, map))
 	{
-		printf("ok\n");
 		size++;
 		free_map(map);
 		map = new_map(size);
