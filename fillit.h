@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 12:20:36 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 09:30:29 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 11:37:25 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,8 @@ int				solve_backtrack(t_list *lst, t_map *map);
 void			map_print(t_map *map);
 int				ft_strchri(const char *s, int c);
 void			ft_lstrev(t_list **list);
+int				check_map_spot(t_map *map, t_etri *tetris, t_point *start);
+t_point			*start_pos(t_map *map);
+void			place_piece(t_map *map, t_etri *tetris, int x, int y, char c);
 
 #endif

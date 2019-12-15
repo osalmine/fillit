@@ -6,12 +6,12 @@
 #    By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/15 12:26:27 by osalmine          #+#    #+#              #
-#    Updated: 2019/12/15 09:01:32 by osalmine         ###   ########.fr        #
+#    Updated: 2019/12/15 09:54:38 by osalmine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
-SOURCE = fillit.c verify.c read.c additional.c solve.c
+SOURCE = fillit.c verify.c read.c additional.c solve.c map.c
 OBJ = $(SOURCE:%.c=%.o)
 FLAGS = -Wall -Werror -Wextra
 INCLUDE = fillit.h
