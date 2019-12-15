@@ -6,11 +6,12 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 09:42:09 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 11:40:32 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 13:08:36 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 t_map	*new_map(int side_len)
 {
@@ -36,24 +37,81 @@ t_map	*new_map(int side_len)
 	return (new_map);
 }
 
-void	place_piece(t_map *map, t_etri *tetris, int x, int y, char c)
+void	place_piece(t_map *map, t_etri *tetris, t_point *start, char c)
 {
-	
+	int i;
+	int j;
+
+	j = 0;
+	while (j < tetris->width)
+	{
+		i = 0;
+		while (i < tetris->height)
+		{
+			printf("\ntetris->arr[i][j]: %c\n", tetris->arr[i][j]);
+			printf("start->y: %d, start->x: %d\n", start->y, start->x);
+			printf("i: %d, j: %d\n", i, j);
+			printf("start->y + i: %d, start->x + j: %d\n", start->y + i, start->x + j);
+			printf("map->map[start->y + i][start->x + j]: %c\n", map->map[start->y + i][start->x + j]);
+			if (tetris->arr[i][j] == '#')
+				map->map[start->y + i][start->x + j] = c;
+			i++;
+		}
+		j++;
+	}
+	ft_memdel((void**)&start);
 }
+
+/*int     check(t_map *map, t_etri *piece, int curx, int cury)
+{
+    int x;
+// curx + cury || cur_pos
+    x = 0;
+    if (map[curx][cury] == ".")
+        x++;
+    if ((curx + piece->arr[2] > map->size) || (cury + piece->pos[3] > map->size))
+        return (0);
+    if (map[curx + piece->arr[2]][cury + piece->arr[3]] == ".")
+        x++;
+    if ((curx + piece->arr[4] > map->size) || (cury + piece->arr[5] > map->size))
+        return (0);
+    if (map->map[curx + piece->arr[4]][cury + piece->arr[5]] == ".")
+        x++;
+    if ((curx + piece->arr[6] > map->size) || (cury + piece->arr[7] > map->size))
+        return (0);
+    if (map->map[curx + piece->arr[6]][cury + piece->arr[7]] == ".")
+        x++;
+    if (x == 4)
+        return (1);
+    return (0);
+}*/
 
 int		check_map_spot(t_map *map, t_etri *tetris, t_point *start)
 {
-	if (map->map[start->y][start->x] == '#')
+	int y;
+	int x;
+
+	printf("\nchar: %c\n", tetris->abc);
+	for (int j = 0; j < tetris->height; j++) {
+		printf("%s\n", tetris->arr[j]);
+	}
+	y = 0;
+	if (map->map[start->y][start->x] != '.')
 		return (0);
-	while (start->y <= map->size - tetris->height)
+
+	while (y < tetris->height)
 	{
 		x = 0;
-		while (start->x <= map->size - tetris->width)
+		while (x < tetris->width)
 		{
-
+//			printf("tetris char: %c\n", tetris->arr[y][x]);
+//			printf("map char: %c\n", map->map[start->y + y][start->x + x]);
+			if (tetris->arr[y][x] == '#' && map->map[start->y + y][start->x + x] != '.')
+				return (0);
 			x++;
 		}
 		y++;
 	}
+	place_piece(map, tetris, start, tetris->abc);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:38 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 11:24:21 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/15 13:10:18 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,33 +41,38 @@ t_point	*start_pos(t_map *map)
 		}
 		i++;
 	}
-	printf("s->y: %d, s->x: %d\n", start->y, start->x);
 	return (start);
 }
 
 int		solve_backtrack(t_list *lst, t_map *map)
 {
-	int		y;
 	int		x;
 	t_point	*start;
 	t_etri	*tetris;
 
-	y = 0;
+	map_print(map);
 	tetris = (t_etri *)(lst->content);
 	start = start_pos(map);
+	x = start->x;
 	while (start->y <= map->size - tetris->height)
 	{
-		x = 0;
+		printf("s->y: %d, m->size - t->height: %d\n", start->y, map->size - tetris->height);
+		start->x = x;
 		while (start->x <= map->size - tetris->width)
 		{
+			printf("s->x: %d, m->size - t->width: %d\n", start->x, map->size - tetris->width);
 			if (check_map_spot(map, tetris, start))
+			{
 				if (solve_backtrack(lst->next, map))
 					return (1);
-			x++;
+				else
+					place_piece(map, tetris, start, '.');
+				}
+			start->x++;
 		}
-		y++;
+		start->y++;
 	}
-	return (1);
+	return (0);
 }
 
 int		ft_sqrt(int n)
