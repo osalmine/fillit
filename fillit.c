@@ -38,5 +38,6 @@ int			main(int argc, char **argv)
 	printf("\n%s, nb_pieces: %d\n\n", "ok", nb_pieces);
 	lst = ft_read(buf, nb_pieces);
 	solve(lst, nb_pieces);
+	while (1) ;
 	return (0);
 }

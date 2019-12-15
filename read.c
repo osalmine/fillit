@@ -27,32 +27,35 @@ int	ft_strchri(const char *s, int c)
 	return (0);
 }
 
-void	free_tetris(t_etri *tetris, size_t size)
+void	free_tetris(t_etri *tetris)
 {
 	int y;
 
 	y = 0;
-	if (size > 0)
+	printf("ok\n");
+	while (y < tetris->height)
 	{
-		while (y < tetris->height)
-			ft_strdel(&(tetris->arr[y++]));
-		ft_memdel((void**)&(tetris->arr));
-		ft_memdel((void**)&tetris);
+		printf("y: %d, t->h: %d, t->arr[y]: %s\n", y, tetris->height, tetris->arr[y]);
+		ft_strdel(&(tetris->arr[y]));
+		y++;
 	}
+	printf("ko\n");
+	ft_memdel((void**)&(tetris->arr));
+	ft_memdel((void**)&tetris);
 }
 
-t_list	*del_lst(t_list **lst)
+t_list	*del_lst(t_list *lst)
 {
 	t_list *ptr;
 
-	ptr = *lst;
-	while (ptr)
+	while (lst)
 	{
-		free_tetris((t_etri*)ptr->content, ptr->content_size);
-		free(ptr);
-		ptr = ptr->next;
+		ptr = lst->next;
+		free_tetris((t_etri*)lst->content);
+		free(lst);
+		lst = ptr;
 	}
-	*lst = NULL;
+	lst = NULL;
 	return (NULL);
 }
 
@@ -81,10 +84,6 @@ t_etri	*find_piece(char *buf, char cur)
 	ft_memdel((void**)&start);
 	ft_memdel((void**)&end);
 	printf("%c\n", cur);
-	for (int j = 0; j < i; j++) {
-		printf("%s\n", arr[j]);
-	}
-	printf("---\n");
 	return (tetris);
 }
 
@@ -108,8 +107,13 @@ t_list	*ft_read(char *buf, int nb_pieces)
 		if (!(tetris = find_piece(temp, cur++)))
 		{
 			ft_strdel(&temp);
-			return (del_lst(&lst));
+			return (del_lst(lst));
 		}
+		for (int j = 0; j < tetris->height; j++) {
+			printf("%s\n", tetris->arr[j]);
+		}
+		printf("tetris height: %d\n", tetris->height);
+		printf("---\n");
 		ft_lstadd(&lst, ft_lstnew(tetris, sizeof(t_etri)));
 		ft_strdel(&temp);
 		ft_memdel((void**)&tetris);
@@ -118,5 +122,18 @@ t_list	*ft_read(char *buf, int nb_pieces)
 	}
 	ft_strdel(&temp);
 	ft_strdel(&str);
+	t_etri *t;
+	int i = 0;
+	while (lst)
+	{
+		t = (t_etri*)lst->content;
+		printf("char: %c\n", t->abc);
+		for (int j = 0; j < t->height; j++) {
+			printf("j: %d, t->h: %d\n", j, t->height);
+			printf("%s\n", t->arr[j]);
+		}
+		printf("%d\n", i++);
+		lst = lst->next;
+	}
 	return (lst);
 }

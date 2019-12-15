@@ -26,14 +26,14 @@ void	map_print(t_map *map)
 	}
 }
 
-int		solve_backtrack(t_list *lst, t_map *map)
+/*int		solve_backtrack(t_list *lst, t_map *map)
 {
 	lst = NULL;
 	map = NULL;
 	if (map->size > 4)
 		return (0);
 	return (1);
-}
+}*/
 
 int		ft_sqrt(int n)
 {
@@ -54,13 +54,13 @@ void	solve(t_list *lst, int nb_pieces)
 	map = new_map(size);
 	printf("\nMAP:\n");
 	map_print(map);
-	lst = NULL;
-	while (!solve_backtrack(lst, map))
+	del_lst(lst);
+/*	while (!solve_backtrack(lst, map))
 	{
 		size++;
 		free_map(map);
 		map = new_map(size);
 	}
-	map_print(map);
+	map_print(map);*/
 	free_map(map);
 }
