@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 14:13:14 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/16 14:34:25 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/16 14:47:22 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ int		ft_verify(char *buf)
 		if (*(str + 1) == '\0')
 			break ;
 	}
+	ft_strdel(&str);
 	return (ft_check_chars(buf) / 4);
 }

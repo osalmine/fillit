@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 12:14:40 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/16 11:48:46 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/16 14:47:51 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ t_list	*ft_read(char *buf, int nb_pieces)
 	t_list	*lst;
 	char	cur;
 	char	*str;
+	char	*ptr;
 
 	cur = 'A';
 	str = ft_strdup(buf);
@@ -98,8 +99,10 @@ t_list	*ft_read(char *buf, int nb_pieces)
 	while (nb_pieces--)
 	{
 		lst = read_piece(lst, str, cur++);
-		if (!(str = ft_strdup(str + 21)))
+		if (!(ptr = ft_strdup(str + 21)))
 			break ;
+		ft_strdel(&str);
+		str = ptr;
 	}
 	ft_strdel(&str);
 	ft_lstrev(&lst);
