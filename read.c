@@ -6,25 +6,11 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 12:14:40 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 18:46:42 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/16 11:48:46 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-int	ft_strchri(const char *s, int c)
-{
-	int i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return (i);
-		i++;
-	}
-	return (0);
-}
 
 void	free_tetris(t_etri *tetris)
 {
@@ -64,17 +50,12 @@ t_etri	*find_piece(char *buf, char cur)
 	start = new_point(3, 3);
 	end = new_point(0, 0);
 	start_end(buf, start, end);
-//	printf("buf:\n%s\n", buf);
-//	printf("start->x: %d, start->y: %d, end->x: %d, end->y: %d\n", start->x, start->y, end->x, end->y);
 	arr = (char**)malloc(sizeof(char*) * (end->y - start->y + 1));
-//	printf("malloced for rows is: %d\n", end->y - start->y + 1);
 	while (i <= end->y - start->y)
 	{
 		arr[i] = ft_strnew(end->x - start->x + 1);
-//		printf("malloced for chars is: %d\n", end->x - start->x + 1);
 		ft_strncpy(arr[i], buf + start->x + (i + start->y) * 5, \
 			end->x - start->x + 1);
-//		printf("arr[%d]:\n%s\n", i, arr[i]);
 		i++;
 	}
 	tetris = new_tetris(arr, end->y - start->y + 1, end->x - start->x + 1, cur);
@@ -83,12 +64,32 @@ t_etri	*find_piece(char *buf, char cur)
 	return (tetris);
 }
 
+t_list	*read_piece(t_list *lst, char *str, char cur)
+{
+	char	*temp;
+	t_etri	*tetris;
+
+	if (!(temp = ft_strsub(str, 0, 21)))
+	{
+		ft_strdel(&temp);
+		return (NULL);
+	}
+	if (!(tetris = find_piece(temp, cur++)))
+	{
+		ft_strdel(&temp);
+		return (del_lst(lst));
+	}
+	ft_lstadd(&lst, ft_lstnew(tetris, sizeof(t_etri)));
+	ft_strdel(&temp);
+	ft_memdel((void**)&tetris);
+	ft_strdel(&temp);
+	return (lst);
+}
+
 t_list	*ft_read(char *buf, int nb_pieces)
 {
 	t_list	*lst;
-	t_etri	*tetris;
 	char	cur;
-	char	*temp;
 	char	*str;
 
 	cur = 'A';
@@ -96,37 +97,11 @@ t_list	*ft_read(char *buf, int nb_pieces)
 	lst = NULL;
 	while (nb_pieces--)
 	{
-		if (!(temp = ft_strsub(str, 0, 21)))
-		{
-			ft_strdel(&temp);
-			return (NULL);
-		}
-		if (!(tetris = find_piece(temp, cur++)))
-		{
-			ft_strdel(&temp);
-			return (del_lst(lst));
-		}
-		ft_lstadd(&lst, ft_lstnew(tetris, sizeof(t_etri)));
-		ft_strdel(&temp);
-		ft_memdel((void**)&tetris);
+		lst = read_piece(lst, str, cur++);
 		if (!(str = ft_strdup(str + 21)))
 			break ;
 	}
-	ft_strdel(&temp);
 	ft_strdel(&str);
 	ft_lstrev(&lst);
-//	program gives read error later with this while loop, as the list is NULL at the end
-//	of this
-
-/*	t_etri *t;
-	while (lst)
-	{
-		t = (t_etri*)lst->content;
-		printf("char: %c\n", t->abc);
-		for (int j = 0; j < t->height; j++) {
-			printf("%s\n", t->arr[j]);
-		}
-		lst = lst->next;
-	}*/
 	return (lst);
 }

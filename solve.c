@@ -6,11 +6,12 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:38 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/15 18:46:38 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/16 12:26:14 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 void	map_print(t_map *map)
 {
@@ -55,17 +56,14 @@ int		solve_backtrack(t_list *lst, t_map *map)
 		return (1);
 	tetris = (t_etri *)(lst->content);
 	start = start_pos(map);
-	x = start->x;
-	y = start->y;
+//	start->y == 0 ? (y = 0) : (y = start->y - 1);
 	y = 0;
 	while (y <= map->size - tetris->height)
 	{
-//		printf("y: %d, m->size - t->height: %d\n", y, map->size - tetris->height);
-		x = start->x;
 		x = 0;
+//		start->x == 0 ? (x = start->x) : (x = start->x - 1);
 		while (x <= map->size - tetris->width)
 		{
-//			printf("x: %d, m->size - t->width: %d\n", x, map->size - tetris->width);
 			if (check_map_spot(map, tetris, x, y))
 			{
 				if (solve_backtrack(lst->next, map))
