@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 14:13:14 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/16 13:59:15 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/16 14:34:25 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		ft_verify(char *buf)
 {
 	char	*temp;
 	char	*str;
+	char	*ptr;
 
 	str = ft_strdup(buf);
 	while (*str)
@@ -83,21 +84,12 @@ int		ft_verify(char *buf)
 		if (!ft_check_connection(temp))
 			return (0);
 		ft_strdel(&temp);
-		if (!(temp = ft_strdup(str + 21)))
+		if (!(ptr = ft_strdup(str + 21)))
 			break ;
-		printf("temp:\n%s\nstr:\n%s\n", temp, str);
 		ft_strdel(&str);
-		str = temp;
-		ft_strdel(&temp);
+		str = ptr;
 		if (*(str + 1) == '\0')
-		{
-//			ft_strdel(&str);
 			break ;
-		}
-		char z[1];
-		read(0, z, 1);
 	}
-	char s[1];
-	read(0, s, 1);
 	return (ft_check_chars(buf) / 4);
 }
