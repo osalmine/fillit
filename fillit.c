@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 12:16:05 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/16 14:49:02 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:24:05 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,5 @@ int			main(int argc, char **argv)
 	if (!(lst = ft_read(buf, nb_pieces)))
 		return (write(1, "error\n", 6));
 	solve(lst, nb_pieces);
-	char s[1];
-	read(0, s, 1);
 	return (0);
 }

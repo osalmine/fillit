@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:38 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/16 15:19:47 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:24:11 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,6 @@ void	solve(t_list *lst, int nb_pieces)
 
 	size = ft_sqrt(nb_pieces * 4);
 	map = new_map(size);
-	char s[1];
-	read(0, s, 1);
 	while (!solve_backtrack(lst, map))
 	{
 		size++;
