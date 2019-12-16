@@ -6,11 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:38 by osalmine          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/12/16 15:24:11 by osalmine         ###   ########.fr       */
-=======
-/*   Updated: 2019/12/16 14:49:04 by osalmine         ###   ########.fr       */
->>>>>>> a806709c1a9c01068952b430bd9203410384b29c
+/*   Updated: 2019/12/16 16:21:05 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +49,15 @@ int		solve_backtrack(t_list *lst, t_map *map)
 {
 	int		x;
 	int		y;
-	t_point	*start;
 	t_etri	*tetris;
 
 	if (lst == NULL)
 		return (1);
 	tetris = (t_etri *)(lst->content);
-	start = start_pos(map);
-//	start->y == 0 ? (y = 0) : (y = start->y - 1);
 	y = 0;
 	while (y <= map->size - tetris->height)
 	{
 		x = 0;
-//		start->x == 0 ? (x = start->x) : (x = start->x - 1);
 		while (x <= map->size - tetris->width)
 		{
 			if (check_map_spot(map, tetris, x, y))
@@ -99,8 +91,6 @@ void	solve(t_list *lst, int nb_pieces)
 
 	size = ft_sqrt(nb_pieces * 4);
 	map = new_map(size);
-	char s[1];
-	read(0, s, 1);
 	while (!solve_backtrack(lst, map))
 	{
 		size++;

@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 10:51:12 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/16 11:08:54 by osalmine         ###   ########.fr       */
+/*   Updated: 2019/12/16 16:21:26 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_point	*new_point(int x, int y)
 	return (new);
 }
 
-void		ft_lstrev(t_list **list)
+void	ft_lstrev(t_list **list)
 {
 	t_list *cur;
 	t_list *next;
