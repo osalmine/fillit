@@ -6,12 +6,11 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 14:13:14 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/16 16:20:23 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/12 09:45:10 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 int		ft_check_chars(char *buf)
 {
