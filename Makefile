@@ -6,14 +6,14 @@
 #    By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/15 12:26:27 by osalmine          #+#    #+#              #
-#    Updated: 2019/12/16 18:30:36 by osalmine         ###   ########.fr        #
+#    Updated: 2020/01/13 13:43:55 by osalmine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 SOURCE = fillit.c verify.c read.c additional.c solve.c map.c
 OBJ = $(SOURCE:%.c=%.o)
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g
 INCLUDE = fillit.h
 LIBFT = libft.a
 

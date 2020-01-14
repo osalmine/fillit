@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 09:42:09 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/12 14:46:28 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:29:10 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,15 @@ int		start_x(char *str, t_etri *tetris)
 		x -= 2;
 //		printf("x is now %d\n", x);
 	}
+	else if (tetris->width == 3 && tetris->arr[0][0] == '.' && x >= 1)
+	{
+//		printf("2nd: tetris is 3 wide, its first character is '.' and x >= 1\n");
+		x -= 1;
+//		printf("x is now %d\n", x);
+	}
 	else if (tetris->width == 2 && tetris->arr[0][0] == '.' && x >= 1)
 	{
-//		printf("2nd: tetris is 2 wide, its first character is '.' and x >= 2\n");
+//		printf("3rd: tetris is 2 wide, its first character is '.' and x >= 2\n");
 		x -= 1;
 //		printf("x is now %d\n", x);
 	}
@@ -85,9 +91,9 @@ void	place_piece(t_map *map, t_etri *tetris, t_point *point, char c)
 
 	i = 0;
 /*	if (c != '.')
-		printf("PLACED TETRIS PIECE:\n");
+		printf("\nPLACED TETRIS PIECE:\n");
 	else
-		printf("REMOVED TETRIS PIECE:\n");
+		printf("\nREMOVED TETRIS PIECE:\n");
 	for (int k = 0; k < tetris->height; k++) {
 		printf("%s\n", tetris->arr[k]);
 	}*/
@@ -106,6 +112,7 @@ void	place_piece(t_map *map, t_etri *tetris, t_point *point, char c)
 		}
 		i++;
 	}
+//	printf("\n");
 	ft_memdel((void **)&point);
 }
 
@@ -114,7 +121,7 @@ int		check_map_spot(t_map *map, t_etri *tetris, int x, int y)
 	int i;
 	int j;
 
-//	printf("check fitting from point x: %d, y: %d\n", x - 1, y - 1);
+//	printf("check fitting from point x: %d, y: %d\n", x, y);
 	i = 0;
 	while (i < tetris->height)
 	{
@@ -127,6 +134,7 @@ int		check_map_spot(t_map *map, t_etri *tetris, int x, int y)
 //				printf("map spot is invalid: map[y (%d) + i (%d)][x (%d) + j (%d)] : %c\n\n", y, i, x, j, map->map[y + i][x + j]);
 				return (0);
 			}
+//			printf("map place y: %d x: %d is valid\n", y + i, x + j);
 			j++;
 		}
 //		printf("map row is valid: %s\n", map->map[y + i]);
