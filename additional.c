@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 10:51:12 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/16 16:21:26 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/16 12:46:43 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_etri	*new_tetris(char **arr, int height, int width, char cur)
 {
 	t_etri *tetris;
 
-	tetris = (t_etri*)malloc(sizeof(t_etri));
+	if (!(tetris = (t_etri*)malloc(sizeof(t_etri))))
+		return (NULL);
 	tetris->height = height;
 	tetris->width = width;
 	tetris->abc = cur;
@@ -28,7 +29,8 @@ t_point	*new_point(int x, int y)
 {
 	t_point *new;
 
-	new = (t_point*)malloc(sizeof(t_point));
+	if (!(new = (t_point*)malloc(sizeof(t_point))))
+		return (NULL);
 	new->x = x;
 	new->y = y;
 	return (new);
@@ -58,10 +60,7 @@ void	free_map(t_map *map)
 
 	i = 0;
 	while (i < map->size)
-	{
-		ft_strdel(&map->map[i]);
-		i++;
-	}
+		ft_strdel(&map->map[i++]);
 	ft_memdel((void**)&map->map);
 	ft_memdel((void**)&map);
 }

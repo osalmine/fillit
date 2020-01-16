@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 12:14:40 by osalmine          #+#    #+#             */
-/*   Updated: 2019/12/16 14:47:51 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/16 12:00:51 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ t_etri	*find_piece(char *buf, char cur)
 	start = new_point(3, 3);
 	end = new_point(0, 0);
 	start_end(buf, start, end);
-	arr = (char**)malloc(sizeof(char*) * (end->y - start->y + 1));
+	if (!(arr = (char**)malloc(sizeof(char*) * (end->y - start->y + 1))))
+		return (NULL);
 	while (i <= end->y - start->y)
 	{
 		arr[i] = ft_strnew(end->x - start->x + 1);

@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 17:56:38 by osalmine          #+#    #+#             */
-/*   Updated: 2020/01/14 16:48:51 by osalmine         ###   ########.fr       */
+/*   Updated: 2020/01/14 17:06:59 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,38 +50,23 @@ int		solve_backtrack(t_list *lst, t_map *map)
 	if (lst == NULL)
 		return (1);
 	tetris = (t_etri *)(lst->content);
-//	map_print(map);
-//	printf("\n");
-//	printf("checking for valid starting point for piece %c\n", tetris->abc);
 	y = start_y(map);
-//	printf("start y: %d\n", y);
 	while (y <= map->size - tetris->height)
 	{
-//		printf("\n1st while loop. y (%d) <= m->size (%d) - t->height (%d) (= %d)\n", y, map->size, tetris->height, map->size - tetris->height);
 		x = start_x(map->map[y], tetris);
-//		printf("start x: %d\n\n", x);
 		while (x <= map->size - tetris->width)
 		{
-//			printf("2nd while loop. x (%d) <= m->size (%d) - t->width (%d) (= %d)\n\n", x, map->size, tetris->width, map->size - tetris->width);
 			if (check_map_spot(map, tetris, x, y))
 			{
 				if (solve_backtrack(lst->next, map))
 					return (1);
 				else
-				{
-//					printf("removing piece %c\n", tetris->abc);
-//					map_print(map);
 					place_piece(map, tetris, new_point(x, y), '.');
-//					printf("\n");
-				}
 			}
 			x++;
 		}
-//		printf("Failed 2nd while loop. x (%d) <= m->size (%d) - t->width (%d) (= %d)\n\n", x, map->size, tetris->width, map->size - tetris->width);
 		y++;
 	}
-//	printf("solve failed in piece %c with map size %d\n", tetris->abc, map->size);
-//	printf("y (%d) <= m->size (%d) - t->height (%d) (= %d)\n", y, map->size, tetris->height, map->size - tetris->height);
 	return (0);
 }
 
