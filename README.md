@@ -5,7 +5,7 @@ Hive - fillit
 
 Grade:
 
-[![fillit grade](https://badge42.herokuapp.com/api/project/osalmine/Fillit)](https://github.com/JaeSeoKim/badge42)
+[![osalmine's Fillit Score](https://badge42.vercel.app/api/v2/cl2gijtz7003009mofz5pnp5t/project/1624477)](https://github.com/JaeSeoKim/badge42)
 
 Usage:
 
